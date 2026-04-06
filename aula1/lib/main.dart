@@ -25,6 +25,27 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+  // TELA 2
+class Tela2 extends StatelessWidget {
+  const Tela2({super.key});
+
+  @override
+   Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Tela 2')),
+      body: Center(
+        child: ElevatedButton.icon(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+          label: Text('Voltar'),
+        )
+      ),
+    );
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -53,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: const Color.fromARGB(255, 55, 131, 218),
         title: Text(widget.title),
       ),
-      
+
       body: Center(
         child: Column(
           mainAxisAlignment: .center,
@@ -63,6 +84,18 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            
+            FloatingActionButton(
+              heroTag: "btnLeft",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Tela2())
+                );
+              },
+              tooltip: 'NextPage',
+              child: const Icon(Icons.arrow_circle_right)
+            )
           ],
         ),
       ),
@@ -93,6 +126,6 @@ class _MyHomePageState extends State<MyHomePage> {
           child: const Icon(Icons.dangerous),
         ),
       ]
-    ));
+     ));
   }
 }
